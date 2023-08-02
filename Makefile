@@ -7,10 +7,13 @@ createdb:
 dropdb:
 	docker exec -it postgres dropdb bango
 
-# migrateup:
-# 	migrate -path db/migration -database "postgresql://root:zephyrus@localhost:5432/bango?sslmode=disable" -verbose up
+migrateup:
+	migrate -path db/migration -database "postgresql://root:zephyrus@localhost:5432/bango?sslmode=disable" -verbose up
 
-# migratedown:
-# 	migrate -path db/migration -database "postgresql://root:zephyrus@localhost:5432/bango?sslmode=disable" -verbose down
+migratedown:
+	migrate -path db/migration -database "postgresql://root:zephyrus@localhost:5432/bango?sslmode=disable" -verbose down
 
-.PHONY: postgres createdb dropdb
+sqlc:
+	 sqlc generate
+
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc
