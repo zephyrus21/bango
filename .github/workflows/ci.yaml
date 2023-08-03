@@ -16,6 +16,8 @@ jobs:
           POSTGRES_USER: root
           POSTGRES_PASSWORD: zephyrus
           POSTGRES_DB: bango
+        ports:
+          - 5432:5432
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -36,7 +38,7 @@ jobs:
       - name: Install migrate dependencies
         run: |
           curl -L https://github.com/golang-migrate/migrate/releases/download/v4.16.2/migrate.linux-amd64.tar.gz | tar xvz
-          mv migrate.linux-amd64 /usr/bin/migrate
+          sudo mv migrate.linux-amd64 /usr/bin/migrate
           which migrate
 
       - name: Db migration
