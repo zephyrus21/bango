@@ -6,25 +6,26 @@ import (
 
 	"bango/api"
 	db "bango/db/sqlc"
+	"bango/utils"
 
 	_ "github.com/lib/pq"
 )
 
-const (
-	dbDriver   = "postgres"
-	dbSource   = "postgresql://root:zephyrus@localhost:5432/bango?sslmode=disable"
-	serverAddr = ":8080"
-)
-
 func main() {
-	conn, err := sql.Open(dbDriver, dbSource)
+	config, err := utils.LoadConfig(".")
+	if err != nil {
+		log.Fatal("cannot load config:", err)
+	}
+
+	conn, err := sql.Open(config.DbDriver, config.DbSource)
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
 	}
+
 	store := db.NewStore(conn)
 	server := api.NewServer(store)
 
-	err = server.Start(serverAddr)
+	err = server.Start(config.ServerAddr)
 	if err != nil {
 		log.Fatal("cannot start server:", err)
 	}

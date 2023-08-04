@@ -1,6 +1,7 @@
 package db
 
 import (
+	"bango/utils"
 	"database/sql"
 	"log"
 	"os"
@@ -9,17 +10,16 @@ import (
 	_ "github.com/lib/pq"
 )
 
-const (
-	dbDriver = "postgres"
-	dbSource = "postgresql://root:zephyrus@localhost:5432/bango?sslmode=disable"
-)
-
 var testQueries *Queries
 var testDb *sql.DB
 
 func TestMain(m *testing.M) {
-	var err error
-	testDb, err = sql.Open(dbDriver, dbSource)
+	config, err := utils.LoadConfig("../..")
+	if err != nil {
+		log.Fatal("cannot load config:", err)
+	}
+
+	testDb, err = sql.Open(config.DbDriver, config.DbSource)
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
 	}
