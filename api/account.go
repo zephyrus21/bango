@@ -1,11 +1,11 @@
 package api
 
 import (
-	db "bango/db/sqlc"
 	"database/sql"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	db "github.com/zephyrus21/bango/db/sqlc"
 )
 
 type createAccountRequest struct {

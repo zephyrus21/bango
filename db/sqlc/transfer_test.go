@@ -1,12 +1,12 @@
 package db
 
 import (
-	"bango/utils"
 	"context"
 	"testing"
 	"time"
 
 	"github.com/stretchr/testify/require"
+	"github.com/zephyrus21/bango/utils"
 )
 
 func createRandomTransfer(t *testing.T, account1, account2 Account) Transfer {

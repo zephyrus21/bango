@@ -1,13 +1,13 @@
 package db
 
 import (
-	"bango/utils"
 	"database/sql"
 	"log"
 	"os"
 	"testing"
 
 	_ "github.com/lib/pq"
+	"github.com/zephyrus21/bango/utils"
 )
 
 var testQueries *Queries

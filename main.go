@@ -4,11 +4,10 @@ import (
 	"database/sql"
 	"log"
 
-	"bango/api"
-	db "bango/db/sqlc"
-	"bango/utils"
-
 	_ "github.com/lib/pq"
+	"github.com/zephyrus21/bango/api"
+	db "github.com/zephyrus21/bango/db/sqlc"
+	"github.com/zephyrus21/bango/utils"
 )
 
 func main() {

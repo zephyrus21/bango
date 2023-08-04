@@ -1,13 +1,13 @@
 package db
 
 import (
-	"bango/utils"
 	"context"
 	"database/sql"
 	"testing"
 	"time"
 
 	"github.com/stretchr/testify/require"
+	"github.com/zephyrus21/bango/utils"
 )
 
 func createRandomAccount(t *testing.T) Account {

@@ -1,12 +1,12 @@
 package db
 
 import (
-	"bango/utils"
 	"context"
 	"testing"
 	"time"
 
 	"github.com/stretchr/testify/require"
+	"github.com/zephyrus21/bango/utils"
 )
 
 func createRandomEntry(t *testing.T, account Account) Entry {
